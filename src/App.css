@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 30px;
 }
 
 .App-logo {
@@ -35,4 +36,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.carouselStyle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrowStyle {
+  align-content: center;
+}
+
+.arrowStyle:hover {
+  cursor: pointer;
 }

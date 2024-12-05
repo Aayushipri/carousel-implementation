@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import firstImage from "./mountain_img.jpg";
+import secondImage from "./mountain_second.jpg";
+import thirdImage from "./third_image.jpg";
+
+const imageArray = [firstImage, secondImage, thirdImage];
 
 function App() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % 3);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Carousel</h1>
+      <div className="carouselStyle">
+        <img src={imageArray[currentImageIndex]} width="1500" height="500" />
+      </div>
     </div>
   );
 }
